@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		223FE06A2805B81400A917ED /* PrototypeUserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223FE0652805B81400A917ED /* PrototypeUserInterface.swift */; };
+		223FE06B2805B81400A917ED /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223FE0662805B81400A917ED /* BalanceView.swift */; };
+		223FE06C2805B81400A917ED /* TransactionListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223FE0672805B81400A917ED /* TransactionListCell.swift */; };
+		223FE06D2805B81400A917ED /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223FE0682805B81400A917ED /* TransactionListView.swift */; };
+		223FE06E2805B81400A917ED /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223FE0692805B81400A917ED /* TransactionView.swift */; };
 		22A442D728046D4B001547E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A442D628046D4B001547E9 /* AppDelegate.swift */; };
 		22A442D928046D4B001547E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A442D828046D4B001547E9 /* SceneDelegate.swift */; };
 		22A442DB28046D4B001547E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A442DA28046D4B001547E9 /* ViewController.swift */; };
@@ -35,6 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		223FE0652805B81400A917ED /* PrototypeUserInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrototypeUserInterface.swift; sourceTree = "<group>"; };
+		223FE0662805B81400A917ED /* BalanceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
+		223FE0672805B81400A917ED /* TransactionListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionListCell.swift; sourceTree = "<group>"; };
+		223FE0682805B81400A917ED /* TransactionListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionListView.swift; sourceTree = "<group>"; };
+		223FE0692805B81400A917ED /* TransactionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 		22A442D328046D4B001547E9 /* Batch7Demo01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Batch7Demo01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A442D628046D4B001547E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22A442D828046D4B001547E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +84,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		223FE0642805B7D900A917ED /* PrototypeUI */ = {
+			isa = PBXGroup;
+			children = (
+				223FE0652805B81400A917ED /* PrototypeUserInterface.swift */,
+				223FE0662805B81400A917ED /* BalanceView.swift */,
+				223FE0672805B81400A917ED /* TransactionListCell.swift */,
+				223FE0682805B81400A917ED /* TransactionListView.swift */,
+				223FE0692805B81400A917ED /* TransactionView.swift */,
+			);
+			path = PrototypeUI;
+			sourceTree = "<group>";
+		};
 		22A442CA28046D4B001547E9 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +119,7 @@
 		22A442D528046D4B001547E9 /* Batch7Demo01 */ = {
 			isa = PBXGroup;
 			children = (
+				223FE0642805B7D900A917ED /* PrototypeUI */,
 				22A442D628046D4B001547E9 /* AppDelegate.swift */,
 				22A442D828046D4B001547E9 /* SceneDelegate.swift */,
 				22A442DA28046D4B001547E9 /* ViewController.swift */,
@@ -255,7 +278,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				22A442DB28046D4B001547E9 /* ViewController.swift in Sources */,
+				223FE06E2805B81400A917ED /* TransactionView.swift in Sources */,
+				223FE06B2805B81400A917ED /* BalanceView.swift in Sources */,
+				223FE06A2805B81400A917ED /* PrototypeUserInterface.swift in Sources */,
 				22A442D728046D4B001547E9 /* AppDelegate.swift in Sources */,
+				223FE06C2805B81400A917ED /* TransactionListCell.swift in Sources */,
+				223FE06D2805B81400A917ED /* TransactionListView.swift in Sources */,
 				22A442D928046D4B001547E9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
