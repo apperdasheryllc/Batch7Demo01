@@ -7,23 +7,16 @@
 
 import Foundation
 
-// replace this placeholder struct with actual implementation by Suneeth
-struct ReplaceMeTransaction {
-    let date: Date
-    let title: String
-    let amount: Int
-}
-
 struct AppState: State {
-    var transactions: [ReplaceMeTransaction] = []
+    var transactions: [Transaction] = []
 }
 
 struct InsertAction: Action {
-    let insertTransaction: ReplaceMeTransaction
+    let insertTransaction: Transaction
 }
 
 struct DecreaseAction: Action {
-    let deleteTransaction: ReplaceMeTransaction
+    let deleteTransaction: Transaction
 }
 
 func appReducer(_ action: Action, _ state: State?) -> State {
@@ -34,7 +27,7 @@ func appReducer(_ action: Action, _ state: State?) -> State {
         //newState.counter += action.increaseBy
         newState.transactions.insert(action.insertTransaction, at: 0)
         
-    case let action as DecreaseAction:
+    case _ as DecreaseAction:
         //newState.counter -= action.decreaseBy
         if newState.transactions.count > 0 {
             newState.transactions.remove(at: 0)

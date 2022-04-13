@@ -26,6 +26,9 @@
 		22A442EE28046D4C001547E9 /* Batch7Demo01Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A442ED28046D4C001547E9 /* Batch7Demo01Tests.swift */; };
 		22A442F828046D4C001547E9 /* Batch7Demo01UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A442F728046D4C001547E9 /* Batch7Demo01UITests.swift */; };
 		22A442FA28046D4C001547E9 /* Batch7Demo01UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A442F928046D4C001547E9 /* Batch7Demo01UITestsLaunchTests.swift */; };
+		E6826618280782FB009A6BC7 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6826617280782FB009A6BC7 /* Transaction.swift */; };
+		E68266202807880B009A6BC7 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E682661F2807880B009A6BC7 /* Interactor.swift */; };
+		E68266252807882E009A6BC7 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68266242807882E009A6BC7 /* DataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,9 @@
 		22A442F328046D4C001547E9 /* Batch7Demo01UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Batch7Demo01UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A442F728046D4C001547E9 /* Batch7Demo01UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Batch7Demo01UITests.swift; sourceTree = "<group>"; };
 		22A442F928046D4C001547E9 /* Batch7Demo01UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Batch7Demo01UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E6826617280782FB009A6BC7 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		E682661F2807880B009A6BC7 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
+		E68266242807882E009A6BC7 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +126,9 @@
 		229E0D9028070B98006188AE /* Viper */ = {
 			isa = PBXGroup;
 			children = (
+				E6826616280782EF009A6BC7 /* Model */,
 				229E0D9128070BA7006188AE /* Presenter.swift */,
+				E682661F2807880B009A6BC7 /* Interactor.swift */,
 			);
 			path = Viper;
 			sourceTree = "<group>";
@@ -179,6 +187,15 @@
 				22A442F928046D4C001547E9 /* Batch7Demo01UITestsLaunchTests.swift */,
 			);
 			path = Batch7Demo01UITests;
+			sourceTree = "<group>";
+		};
+		E6826616280782EF009A6BC7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E6826617280782FB009A6BC7 /* Transaction.swift */,
+				E68266242807882E009A6BC7 /* DataModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,12 +333,15 @@
 				223FE06E2805B81400A917ED /* TransactionView.swift in Sources */,
 				223FE06B2805B81400A917ED /* BalanceView.swift in Sources */,
 				229E0D8B28070593006188AE /* Store.swift in Sources */,
+				E68266252807882E009A6BC7 /* DataModel.swift in Sources */,
+				E6826618280782FB009A6BC7 /* Transaction.swift in Sources */,
 				229E0D8F2807080C006188AE /* ViewController+BalanceView.swift in Sources */,
 				229E0D9228070BA7006188AE /* Presenter.swift in Sources */,
 				223FE06A2805B81400A917ED /* PrototypeUserInterface.swift in Sources */,
 				22A442D728046D4B001547E9 /* AppDelegate.swift in Sources */,
 				223FE06C2805B81400A917ED /* TransactionListCell.swift in Sources */,
 				223FE06D2805B81400A917ED /* TransactionListView.swift in Sources */,
+				E68266202807880B009A6BC7 /* Interactor.swift in Sources */,
 				22A442D928046D4B001547E9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
