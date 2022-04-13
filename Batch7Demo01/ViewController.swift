@@ -5,30 +5,46 @@
 //  Created by Graham Diehl on 4/11/22.
 //
 
+// A ViewController that demonstrates Redux and VIPER
+
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, StoreSubscriber {
     
-    func configureView(){
-        self.view.backgroundColor = .systemBackground
-        
-        let point = CGPoint.zero
-        let size = CGSize(width: 100, height: 50)
-        let rect = CGRect(origin: point, size: size)
-        let textLabel = UILabel(frame: rect)
-        textLabel.center = view.center
-        textLabel.text = "Hello World"
-        textLabel.textAlignment = .center
-        textLabel.backgroundColor = .secondarySystemBackground
-        view.addSubview(textLabel)
+    var balanceView = UIView()
+    var balanceTextLabel = UILabel()
+    var balanceValueLabel = UILabel()
+    
+    let presenter = Presenter()
+    
+    // Send the Action
+    @objc func handleTap(gesture: UITapGestureRecognizer){
+        presenter.handleTap()
     }
-
+    
+    func addTapGesture(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    // Handle the State
+    func newState(state: State) {
+        guard let appState = state as? AppState else {return}
+        let balance = presenter.calculateBalance(transactions: appState.transactions)
+        balanceValueLabel.text = "\(balance)"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        configureView()
+        self.view.backgroundColor = .systemBackground
+        
+        addBalanceView()
+        
+        addTapGesture()
+        
+        presenter.store.subscribe(self)
     }
-
+    
 
 }
 
