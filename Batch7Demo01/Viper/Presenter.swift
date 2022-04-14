@@ -43,8 +43,8 @@ class Presenter {
         return value
     }
     
-    func add(with title: String, amount: Int) {
-        interactor.add(name: title, amount: amount, type: .deposit)
+    func add(with title: String, amount: Int, type: TransactionType) {
+        interactor.add(name: title, amount: amount, type: type)
         print("balance \(interactor.model.balance)")
         store.dispatch(action: UpdateAction(interactor: interactor))
     }

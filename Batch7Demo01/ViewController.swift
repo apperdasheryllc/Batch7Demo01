@@ -14,6 +14,11 @@ class ViewController: UIViewController, StoreSubscriber {
     var balanceView = UIView()
     var balanceTextLabel = UILabel()
     var balanceValueLabel = UILabel()
+    
+    var transactionView = UIView()
+    var transactionTitleField = UITextField()
+    var transactionAmountField = UITextField()
+    
     var addButton = UIButton()
     var deleteButton = UIButton()
     var updateButton = UIButton()
@@ -31,17 +36,17 @@ class ViewController: UIViewController, StoreSubscriber {
         self.view.backgroundColor = .systemBackground
         setupButtons()
         addBalanceView()
-        
+        addTransactionView()
         presenter.store.subscribe(self)
     }
     func setupButtons() {
-        addButton.setTitle("ADD", for: .normal)
+        addButton.setTitle("Deposit", for: .normal)
         addButton.titleLabel?.font = .systemFont(ofSize: 12.0, weight: .semibold)
         addButton.backgroundColor = .darkGray
         addButton.layer.cornerRadius = 5.0
         addButton.addTarget(self, action: #selector(addButtonClicked), for: .touchUpInside)
         
-        deleteButton.setTitle("DELETE", for: .normal)
+        deleteButton.setTitle("Withdrawal", for: .normal)
         deleteButton.titleLabel?.font = .systemFont(ofSize: 12.0, weight: .semibold)
         deleteButton.backgroundColor = .red
         deleteButton.layer.cornerRadius = 5.0
@@ -54,44 +59,66 @@ class ViewController: UIViewController, StoreSubscriber {
         updateButton.addTarget(self, action: #selector(updateButtonClicked), for: .touchUpInside)
         
         addButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(addButton)
+        transactionView.addSubview(addButton)
         NSLayoutConstraint.activate([
-            addButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40.0),
-            addButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            addButton.leadingAnchor.constraint(equalTo: transactionView.leadingAnchor, constant: 40.0),
+            addButton.bottomAnchor.constraint(equalTo: transactionView.bottomAnchor),
             addButton.heightAnchor.constraint(equalToConstant: 30),
             addButton.widthAnchor.constraint(equalToConstant: 75)
         ])
         
+        /*
         updateButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(updateButton)
+        transactionView.addSubview(updateButton)
         NSLayoutConstraint.activate([
-            updateButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            updateButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            updateButton.centerXAnchor.constraint(equalTo: transactionView.centerXAnchor),
+            updateButton.bottomAnchor.constraint(equalTo: transactionView.bottomAnchor),
             updateButton.heightAnchor.constraint(equalToConstant: 30),
             updateButton.widthAnchor.constraint(equalToConstant: 75)
         ])
-        
+        */
         
         deleteButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(deleteButton)
+        transactionView.addSubview(deleteButton)
         NSLayoutConstraint.activate([
-            deleteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40.0),
-            deleteButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            deleteButton.trailingAnchor.constraint(equalTo: transactionView.trailingAnchor, constant: -40.0),
+            deleteButton.bottomAnchor.constraint(equalTo: transactionView.bottomAnchor),
             deleteButton.heightAnchor.constraint(equalToConstant: 30),
             deleteButton.widthAnchor.constraint(equalToConstant: 75)
         ])
     }
     
     @objc func addButtonClicked() {
-        // hardcoded for time-being
-        presenter.add(with: "default", amount: 10)
+        
+        // throw an error here?
+        guard let transactionTitle = transactionTitleField.text, let transactionAmount = transactionAmountField.text else {
+            return
+        }
+        
+        guard let amountValue = Int(transactionAmount) else {
+            return
+        }
+        presenter.add(with: transactionTitle, amount: amountValue, type: .deposit)
         print("\(presenter.balance) --- \(presenter.transactions.count)" )
     }
+    
+    // not deleting, inserting withdrawals, swipe on item list to delete
     @objc func deleteButtonClicked() {
         // hardcoded for time-being
-        presenter.delete(at: 0)
+        
+        // throw an error here?
+        guard let transactionTitle = transactionTitleField.text, let transactionAmount = transactionAmountField.text else {
+            return
+        }
+        
+        guard let amountValue = Int(transactionAmount) else {
+            return
+        }
+        presenter.add(with: transactionTitle, amount: amountValue, type: .withdrawl)
+        
         print("\(presenter.balance) --- \(presenter.transactions.count)" )
     }
+    
     @objc func updateButtonClicked() {
         // hardcoded for time-being
         presenter.update(at: 0, title: "new title", amount: 10)
