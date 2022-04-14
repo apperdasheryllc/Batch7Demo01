@@ -29,6 +29,8 @@ class ViewController: UIViewController, StoreSubscriber {
         guard let appState = state as? AppState else {return}
         let balance = presenter.calculateBalance(transactions: appState.transactions)
         balanceValueLabel.text = "\(balance)"
+        transactionTitleField.text = ""
+        transactionAmountField.text = ""
     }
     
     override func viewDidLoad() {

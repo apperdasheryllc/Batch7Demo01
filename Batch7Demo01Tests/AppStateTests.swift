@@ -41,7 +41,7 @@ class AppStateTests: XCTestCase {
     
     func skip_testAppState_Insert(){
         let appState = AppState()
-        let replaceMe = ReplaceMeTransaction(date: Date(), title: "Test", amount: 12)
+        //let replaceMe = Transaction(date: Date(), title: "Test", amount: 12)
         //let store = Store()
         
     }

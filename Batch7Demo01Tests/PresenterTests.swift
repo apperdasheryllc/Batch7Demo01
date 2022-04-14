@@ -34,18 +34,26 @@ class PresenterTests: XCTestCase {
     }
 
     func testPresenter_Initialization_StoreNotNill(){
-        let presenter = Presenter()
+        let dataModel = DataModel()
+        let interactor = Interactor(model: dataModel)
+        let presenter = Presenter(interactor: interactor)
         XCTAssertNotNil(presenter.store)
     }
     
-    func testPresenter_InsertAction_ShouldIncrement(){
-        let presenter = Presenter()
-        presenter.handleTap()
+    func testPresenter_InsertAction_ShouldUpdateBalance(){
+        let dataModel = DataModel()
+        let interactor = Interactor(model: dataModel)
+        let presenter = Presenter(interactor: interactor)
+        //presenter.handleTap()
+        presenter.add(with: "Test 1", amount: 20, type: .deposit)
+        presenter.add(with: "Test 2", amount: 30, type: .deposit)
         //XCTAssertTrue(presenter.store.state as? AppState)
         guard let appState = presenter.store.state as? AppState else {
             XCTFail()
             return
         }
-        XCTAssertFalse(appState.transactions.isEmpty)
+        //XCTAssertFalse(appState.transactions.isEmpty)
+        let balance = presenter.calculateBalance(transactions: appState.transactions)
+        XCTAssert(balance == 50)
     }
 }
