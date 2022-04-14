@@ -24,3 +24,5 @@ struct Transaction {
         self.date = date
     }
 }
+
+extension Transaction: Hashable { }

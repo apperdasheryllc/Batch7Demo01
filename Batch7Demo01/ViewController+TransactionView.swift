@@ -57,7 +57,7 @@ extension ViewController {
             transactionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             transactionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             transactionView.topAnchor.constraint(equalTo: balanceView.bottomAnchor),
-            transactionView.heightAnchor.constraint(equalToConstant: 200)
+            transactionView.heightAnchor.constraint(equalToConstant: 150)
         ])
         
         addTransactionTitleField()

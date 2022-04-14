@@ -11,6 +11,13 @@ import UIKit
 
 class ViewController: UIViewController, StoreSubscriber {
     
+    let formatter = NumberFormatter()
+    
+    func configureFormatter(){
+        formatter.groupingSize = 3
+        formatter.usesGroupingSeparator = true
+    }
+    
     var balanceView = UIView()
     var balanceTextLabel = UILabel()
     var balanceValueLabel = UILabel()
@@ -27,18 +34,27 @@ class ViewController: UIViewController, StoreSubscriber {
     // Handle the State
     func newState(state: State) {
         guard let appState = state as? AppState else {return}
-        let balance = presenter.calculateBalance(transactions: appState.transactions)
-        balanceValueLabel.text = "\(balance)"
+        let transactions = appState.transactions
+        let balance = presenter.calculateBalance(transactions: transactions)
+        if let formattedString = formatter.string(from: NSNumber(value: balance)){
+            balanceValueLabel.text = "$\(formattedString)"
+        }
+        else{
+            balanceValueLabel.text = "\(balance)"
+        }
         transactionTitleField.text = ""
         transactionAmountField.text = ""
+        performQuery(transactions: transactions)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
+        configureFormatter()
         setupButtons()
         addBalanceView()
         addTransactionView()
+        configureTransactionList()
         presenter.store.subscribe(self)
     }
     func setupButtons() {
@@ -126,5 +142,19 @@ class ViewController: UIViewController, StoreSubscriber {
         presenter.update(at: 0, title: "new title", amount: 10)
         print("\(presenter.balance) --- \(presenter.transactions.count)" )
     }
+    
+    
+    
+    
+    //MARK: - Transaction List
+    
+    var transactionListView: UICollectionView! = nil
+    
+    enum Section {
+        case main
+    }
+    
+    var dataSource: UICollectionViewDiffableDataSource<Section, Transaction>! = nil
 }
+
 
