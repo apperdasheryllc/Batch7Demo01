@@ -9,9 +9,9 @@ import Foundation
 import Combine
 
 final class DataModel {
+    @Published var balance: Int = 0
     @Published var transactions: [Transaction] = []
     private var cancellables = Set<AnyCancellable>()
-    
     func add(transaction: Transaction) {
         transactions.append(transaction)
     }
@@ -21,6 +21,8 @@ final class DataModel {
         }
     }
     func update(index: Int, updated: Transaction) {
-        transactions[index] = updated
+        if !transactions.isEmpty && index < transactions.count{
+            transactions[index] = updated
+        }
     }
 }

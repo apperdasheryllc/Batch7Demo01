@@ -7,8 +7,20 @@
 
 import Foundation
 
+enum TransactionType: Int {
+    case deposit
+    case withdrawl
+}
 struct Transaction {
     let title: String
     let amount: Int
+    let type: TransactionType
     let date: Date
+    
+    init(title: String, amount: Int,type: TransactionType, date: Date = Date()) {
+        self.title = title
+        self.amount = (type == .deposit) ?  amount : -amount
+        self.type = type
+        self.date = date
+    }
 }

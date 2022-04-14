@@ -93,16 +93,19 @@ class ViewController: UIViewController, StoreSubscriber {
     }
     
     @objc func addButtonClicked() {
+        // hardcoded for time-being
         presenter.add(with: "default", amount: 10)
-        print(presenter.transactions)
+        print("\(presenter.balance) --- \(presenter.transactions.count)" )
     }
     @objc func deleteButtonClicked() {
+        // hardcoded for time-being
         presenter.delete(at: 0)
-        print(presenter.transactions)
+        print("\(presenter.balance) --- \(presenter.transactions.count)" )
     }
     @objc func updateButtonClicked() {
-        presenter.update(at: 0, title: "new title", amount: 30)
-        print(presenter.transactions)
+        // hardcoded for time-being
+        presenter.update(at: 0, title: "new title", amount: 10)
+        print("\(presenter.balance) --- \(presenter.transactions.count)" )
     }
 }
 

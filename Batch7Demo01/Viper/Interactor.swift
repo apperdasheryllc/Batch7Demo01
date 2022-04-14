@@ -12,15 +12,15 @@ class Interactor {
     init(model: DataModel) {
         self.model = model
     }
-    func add(name: String, amount: Int) {
-        let transaction = Transaction(title: name, amount: amount, date: Date())
+    func add(name: String, amount: Int, type: TransactionType) {
+        let transaction = Transaction(title: name, amount: amount, type: type)
         model.add(transaction: transaction)
     }
     func delete(index: Int) {
         model.delete(index: index)
     }
-    func update(at index: Int, title: String, amount: Int) {
-        let transaction = Transaction(title: title, amount: amount, date: Date())
+    func update(at index: Int, title: String, amount: Int, type: TransactionType) {
+        let transaction = Transaction(title: title, amount: amount, type: type)
         model.update(index: index, updated: transaction)
     }
 }
