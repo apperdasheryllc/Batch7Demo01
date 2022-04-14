@@ -43,19 +43,17 @@ class Presenter {
         return value
     }
     
-    func handleTap(){
-        // TO DO: replace this with the actual interactor entity
-        let testTransaction = Transaction(title: "Test Transaction", amount: 10, type: .deposit)
-        store.dispatch(action: InsertAction(insertTransaction: testTransaction))
-    }
     func add(with title: String, amount: Int) {
         interactor.add(name: title, amount: amount, type: .deposit)
         print("balance \(interactor.model.balance)")
+        store.dispatch(action: UpdateAction(interactor: interactor))
     }
     func delete(at index: Int) {
         interactor.delete(index: index)
+        store.dispatch(action: UpdateAction(interactor: interactor))
     }
     func update(at index: Int, title: String, amount: Int) {
         interactor.update(at: index, title: title, amount: amount, type: .withdrawl)
+        store.dispatch(action: UpdateAction(interactor: interactor))
     }
 }

@@ -19,16 +19,6 @@ class ViewController: UIViewController, StoreSubscriber {
     var updateButton = UIButton()
     let presenter = Presenter(interactor: Interactor(model: DataModel()))
     
-    // Send the Action
-    @objc func handleTap(gesture: UITapGestureRecognizer){
-        presenter.handleTap()
-    }
-    
-    func addTapGesture(){
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        self.view.addGestureRecognizer(tapGesture)
-    }
-    
     // Handle the State
     func newState(state: State) {
         guard let appState = state as? AppState else {return}
@@ -41,7 +31,7 @@ class ViewController: UIViewController, StoreSubscriber {
         self.view.backgroundColor = .systemBackground
         setupButtons()
         addBalanceView()
-        addTapGesture()
+        
         presenter.store.subscribe(self)
     }
     func setupButtons() {
