@@ -26,3 +26,9 @@ struct Transaction {
 }
 
 extension Transaction: Hashable { }
+
+extension Transaction: CustomStringConvertible {
+    var description: String {
+        return "Transaction on \(date) named \(title) for amount \(amount)"
+    }
+}

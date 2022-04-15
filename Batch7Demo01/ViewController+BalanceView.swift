@@ -22,7 +22,8 @@ extension ViewController {
             balanceTextLabel.bottomAnchor.constraint(equalTo: balanceView.bottomAnchor)
         ])
         
-        balanceTextLabel.text = "Balance:"
+        balanceTextLabel.font = .preferredFont(forTextStyle: .title1, compatibleWith: .current)
+        balanceTextLabel.text = "Balance"
         
     }
     
@@ -38,6 +39,7 @@ extension ViewController {
             balanceValueLabel.bottomAnchor.constraint(equalTo: balanceView.bottomAnchor)
         ])
         
+        balanceValueLabel.font = .preferredFont(forTextStyle: .title1, compatibleWith: .current)
         balanceValueLabel.text = "0"
         balanceValueLabel.textAlignment = .right
     }
@@ -48,8 +50,8 @@ extension ViewController {
         balanceView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            balanceView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            balanceView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            balanceView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            balanceView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             balanceView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             balanceView.heightAnchor.constraint(equalToConstant: 100)
         ])

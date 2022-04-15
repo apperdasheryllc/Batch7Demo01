@@ -31,6 +31,13 @@ extension ViewController {
                 content.secondaryText = "$\(formattedAmount)"
             }
             cell.contentConfiguration = content
+            
+            let disclosure = UICellAccessory.disclosureIndicator()
+            let delete = UICellAccessory.delete(displayed: .always) {
+                self.deleteHandler(indexPath: indexPath)
+            }
+            cell.accessories = [disclosure, delete]
+            
         }
         
         dataSource = UICollectionViewDiffableDataSource<Section, Transaction>(collectionView: transactionListView) {
@@ -39,6 +46,11 @@ extension ViewController {
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: identifier)
         }
 
+    }
+    
+    func deleteHandler(indexPath: IndexPath){
+        print("deleteHandler")
+        presenter.delete(at: indexPath.row)
     }
     
     
@@ -72,5 +84,7 @@ extension ViewController {
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("didSelectItemAt")
+        let transaction = presenter.transactions[indexPath.row]
+        print(transaction.description)
     }
 }
