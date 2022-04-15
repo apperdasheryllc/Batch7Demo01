@@ -5,6 +5,7 @@
 //  Created by Graham Diehl on 4/13/22.
 //
 
+/// Updates the App State based on the User Action
 
 import Foundation
 

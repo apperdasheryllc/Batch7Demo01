@@ -32,6 +32,7 @@ class Presenter {
             .store(in: &cancellables)
     }
     
+    /// Calculate the balance of an array of Transactions
     func calculateBalance(transactions: [Transaction]) -> Int {
         var value = 0
         
@@ -43,15 +44,20 @@ class Presenter {
         return value
     }
     
+    /// Add a new transaction to the data model
     func add(with title: String, amount: Int, type: TransactionType) {
         interactor.add(name: title, amount: amount, type: type)
         print("balance \(interactor.model.balance)")
         store.dispatch(action: UpdateAction(interactor: interactor))
     }
+    
+    // Delete a transaction from the data model
     func delete(at index: Int) {
         interactor.delete(index: index)
         store.dispatch(action: UpdateAction(interactor: interactor))
     }
+    
+    // Update a transaction in the data model
     func update(at index: Int, title: String, amount: Int) {
         interactor.update(at: index, title: title, amount: amount, type: .withdrawl)
         store.dispatch(action: UpdateAction(interactor: interactor))

@@ -5,7 +5,7 @@
 //  Created by Graham Diehl on 4/11/22.
 //
 
-// A ViewController that demonstrates Redux and VIPER
+/// A ViewController that demonstrates Redux and VIPER
 
 import UIKit
 

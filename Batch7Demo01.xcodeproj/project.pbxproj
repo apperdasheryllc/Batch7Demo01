@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2265685E2809B0C9008F7545 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 2265685D2809B0C9008F7545 /* Documentation.docc */; };
 		229E0D8B28070593006188AE /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229E0D8A28070593006188AE /* Store.swift */; };
 		229E0D8D2807060C006188AE /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229E0D8C2807060C006188AE /* AppState.swift */; };
 		229E0D8F2807080C006188AE /* ViewController+BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229E0D8E2807080C006188AE /* ViewController+BalanceView.swift */; };
@@ -51,6 +52,7 @@
 		223FE0672805B81400A917ED /* TransactionListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionListCell.swift; sourceTree = "<group>"; };
 		223FE0682805B81400A917ED /* TransactionListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionListView.swift; sourceTree = "<group>"; };
 		223FE0692805B81400A917ED /* TransactionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
+		2265685D2809B0C9008F7545 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		229E0D8A28070593006188AE /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		229E0D8C2807060C006188AE /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		229E0D8E2807080C006188AE /* ViewController+BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+BalanceView.swift"; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				22A442DF28046D4C001547E9 /* Assets.xcassets */,
 				22A442E128046D4C001547E9 /* LaunchScreen.storyboard */,
 				22A442E428046D4C001547E9 /* Info.plist */,
+				2265685D2809B0C9008F7545 /* Documentation.docc */,
 			);
 			path = Batch7Demo01;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				229E0D8F2807080C006188AE /* ViewController+BalanceView.swift in Sources */,
 				229E0D9228070BA7006188AE /* Presenter.swift in Sources */,
 				22A442D728046D4B001547E9 /* AppDelegate.swift in Sources */,
+				2265685E2809B0C9008F7545 /* Documentation.docc in Sources */,
 				E68266202807880B009A6BC7 /* Interactor.swift in Sources */,
 				22A442D928046D4B001547E9 /* SceneDelegate.swift in Sources */,
 			);
@@ -527,6 +531,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.apperdashery.test.Batch7Demo01;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_DOCUMENTATION_COMPILER = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -554,6 +559,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.apperdashery.test.Batch7Demo01;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_DOCUMENTATION_COMPILER = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
