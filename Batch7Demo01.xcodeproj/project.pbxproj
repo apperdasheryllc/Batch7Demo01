@@ -7,11 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		223FE06A2805B81400A917ED /* PrototypeUserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223FE0652805B81400A917ED /* PrototypeUserInterface.swift */; };
-		223FE06B2805B81400A917ED /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223FE0662805B81400A917ED /* BalanceView.swift */; };
-		223FE06C2805B81400A917ED /* TransactionListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223FE0672805B81400A917ED /* TransactionListCell.swift */; };
-		223FE06D2805B81400A917ED /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223FE0682805B81400A917ED /* TransactionListView.swift */; };
-		223FE06E2805B81400A917ED /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223FE0692805B81400A917ED /* TransactionView.swift */; };
 		229E0D8B28070593006188AE /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229E0D8A28070593006188AE /* Store.swift */; };
 		229E0D8D2807060C006188AE /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229E0D8C2807060C006188AE /* AppState.swift */; };
 		229E0D8F2807080C006188AE /* ViewController+BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229E0D8E2807080C006188AE /* ViewController+BalanceView.swift */; };
@@ -336,8 +331,6 @@
 			files = (
 				22A442DB28046D4B001547E9 /* ViewController.swift in Sources */,
 				229E0D8D2807060C006188AE /* AppState.swift in Sources */,
-				223FE06E2805B81400A917ED /* TransactionView.swift in Sources */,
-				223FE06B2805B81400A917ED /* BalanceView.swift in Sources */,
 				229E0D8B28070593006188AE /* Store.swift in Sources */,
 				E68266252807882E009A6BC7 /* DataModel.swift in Sources */,
 				22FD62322808B1E20058DD6C /* ViewController+TransactionList.swift in Sources */,
@@ -345,10 +338,7 @@
 				E6826618280782FB009A6BC7 /* Transaction.swift in Sources */,
 				229E0D8F2807080C006188AE /* ViewController+BalanceView.swift in Sources */,
 				229E0D9228070BA7006188AE /* Presenter.swift in Sources */,
-				223FE06A2805B81400A917ED /* PrototypeUserInterface.swift in Sources */,
 				22A442D728046D4B001547E9 /* AppDelegate.swift in Sources */,
-				223FE06C2805B81400A917ED /* TransactionListCell.swift in Sources */,
-				223FE06D2805B81400A917ED /* TransactionListView.swift in Sources */,
 				E68266202807880B009A6BC7 /* Interactor.swift in Sources */,
 				22A442D928046D4B001547E9 /* SceneDelegate.swift in Sources */,
 			);

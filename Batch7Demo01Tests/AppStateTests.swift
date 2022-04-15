@@ -8,7 +8,7 @@
 import XCTest
 @testable import Batch7Demo01
 
-class AppStateTests: XCTestCase {
+class AppStateTests: XCTestCase, StoreSubscriber {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -37,6 +37,27 @@ class AppStateTests: XCTestCase {
     func testAppState_Initialization(){
         let appState = AppState()
         XCTAssertTrue(appState.transactions.isEmpty)
+    }
+    
+    func testAppState_Dispatch_Change(){
+        let dataModel = DataModel()
+        let interactor = Interactor(model: dataModel)
+        let presenter = Presenter(interactor: interactor)
+        presenter.store.subscribe(self)
+        let title = "Test Transaction"
+        let amount = 25
+        let type: TransactionType = .deposit
+        interactor.add(name: title, amount: amount, type: type)
+        print("balance \(interactor.model.balance)")
+        presenter.store.dispatch(action: UpdateAction(interactor: interactor))
+    }
+    
+    func newState(state: State) {
+        guard let appState = state as? AppState else {
+            XCTFail()
+            return
+        }
+        XCTAssertFalse(appState.transactions.isEmpty, "Expected to find app state transactions.")
     }
     
     func skip_testAppState_Insert(){

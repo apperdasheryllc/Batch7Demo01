@@ -47,13 +47,29 @@ class PresenterTests: XCTestCase {
         //presenter.handleTap()
         presenter.add(with: "Test 1", amount: 20, type: .deposit)
         presenter.add(with: "Test 2", amount: 30, type: .deposit)
-        //XCTAssertTrue(presenter.store.state as? AppState)
-        guard let appState = presenter.store.state as? AppState else {
-            XCTFail()
-            return
-        }
-        //XCTAssertFalse(appState.transactions.isEmpty)
-        let balance = presenter.calculateBalance(transactions: appState.transactions)
+        
+        let balance = presenter.calculateBalance(transactions: presenter.transactions)
         XCTAssert(balance == 50)
+    }
+    
+    func testPresenter_DeleteAction_ShouldUpdateTransactions(){
+        let dataModel = DataModel()
+        let interactor = Interactor(model: dataModel)
+        let presenter = Presenter(interactor: interactor)
+        //presenter.handleTap()
+        presenter.add(with: "Test 1", amount: 20, type: .deposit)
+        presenter.delete(at: 0)
+        let balance = presenter.calculateBalance(transactions: presenter.transactions)
+        XCTAssertTrue(balance == 0, "Expected balance to incremented, then deleted causing balance to be zero.")
+    }
+    
+    func testPresenter_CalculateBalance(){
+        let dataModel = DataModel()
+        let interactor = Interactor(model: dataModel)
+        let presenter = Presenter(interactor: interactor)
+        let transaction1 = Transaction(title: "Test 1", amount: 25, type: .deposit)
+        let transaction2 = Transaction(title: "Test 2", amount: 30, type: .deposit)
+        let balance = presenter.calculateBalance(transactions: [transaction1, transaction2])
+        XCTAssertEqual(balance, 55)
     }
 }
