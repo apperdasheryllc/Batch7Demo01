@@ -22,7 +22,7 @@ class DataModelTests: XCTestCase {
     func testDataModel_WhenTransaction_Added() {
         let transaction = Transaction(title: "test", amount: 5, type: .deposit)
         XCTAssertTrue(dataModel.transactions.isEmpty)
-        dataModel.add(transaction: transaction)
+        dataModel.add(item: transaction)
         XCTAssertFalse(dataModel.transactions.isEmpty)
         XCTAssertEqual(dataModel.transactions.count, 1)
     }
@@ -36,7 +36,7 @@ class DataModelTests: XCTestCase {
         let title = try! XCTUnwrap(dataModel.transactions.first?.title)
         XCTAssertEqual(title, "test")
         let updatedTransaction = Transaction(title: "updated", amount: 10, type: .deposit)
-        dataModel.update(index: 0, updated: updatedTransaction)
+        dataModel.update(index: 0, item: updatedTransaction)
         let updatedTitle = try! XCTUnwrap(dataModel.transactions.first?.title)
         XCTAssertEqual(updatedTitle, "updated")
     }

@@ -14,13 +14,13 @@ class Interactor {
     }
     func add(name: String, amount: Int, type: TransactionType) {
         let transaction = Transaction(title: name, amount: amount, type: type)
-        model.add(transaction: transaction)
+        model.add(item: transaction)
     }
     func delete(index: Int) {
         model.delete(index: index)
     }
     func update(at index: Int, title: String, amount: Int, type: TransactionType) {
         let transaction = Transaction(title: title, amount: amount, type: type)
-        model.update(index: index, updated: transaction)
+        model.update(index: index, item: transaction)
     }
 }

@@ -8,21 +8,24 @@
 import Foundation
 import Combine
 
-final class DataModel {
+final class DataModel: Repository {
+    typealias T = Transaction
+    typealias K = Int
     @Published var balance: Int = 0
     @Published var transactions: [Transaction] = []
     private var cancellables = Set<AnyCancellable>()
-    func add(transaction: Transaction) {
-        transactions.append(transaction)
+    
+    func add(item: Transaction) {
+        transactions.append(item)
     }
     func delete(index: Int) {
         if !transactions.isEmpty && index < transactions.count{
             transactions.remove(at: index)
         }
     }
-    func update(index: Int, updated: Transaction) {
+    func update(index: Int, item: Transaction) {
         if !transactions.isEmpty && index < transactions.count{
-            transactions[index] = updated
+            transactions[index] = item
         }
     }
 }
