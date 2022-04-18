@@ -72,4 +72,10 @@ class PresenterTests: XCTestCase {
         let balance = presenter.calculateBalance(transactions: [transaction1, transaction2])
         XCTAssertEqual(balance, 55)
     }
+    
+    func testTransactionDescription_ShouldReturnString(){
+        let transaction = Transaction(title: "Test 1", amount: 25, type: .deposit)
+        XCTAssertNotNil(transaction.description)
+        XCTAssertFalse(transaction.description.isEmpty)
+    }
 }
