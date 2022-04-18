@@ -17,8 +17,37 @@ extension ViewController {
     }
 
     private func createLayout() -> UICollectionViewLayout {
-        let config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        var config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        config.leadingSwipeActionsConfigurationProvider = { [weak self] (indexPath) in
+            guard let self = self else { return nil }
+            guard let item = self.dataSource.itemIdentifier(for: indexPath) else { return nil }
+            return self.leadingSwipeActionConfigurationForListCellItem(item)
+        }
         return UICollectionViewCompositionalLayout.list(using: config)
+    }
+    
+    
+    func leadingSwipeActionConfigurationForListCellItem(_ item: Transaction) -> UISwipeActionsConfiguration? {
+        print("swipe")
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {
+            [weak self] (_, _, completion) in
+            guard let self = self else { return }
+            // trigger the action with a reference to the model
+            self.deleteItem(item)
+            completion(true)
+        }
+        deleteAction.image = UIImage(systemName: "trash.fill")
+        deleteAction.backgroundColor = .systemRed
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
+    
+    func deleteItem(_ item: Transaction){
+        if let firstObjectIndex = presenter.transactions.firstIndex(of: item){
+            deleteHandler(index: firstObjectIndex)
+        }
     }
     
     private func configureDataSource() {
@@ -33,10 +62,10 @@ extension ViewController {
             cell.contentConfiguration = content
             
             let disclosure = UICellAccessory.disclosureIndicator()
-            let delete = UICellAccessory.delete(displayed: .always) {
-                self.deleteHandler(indexPath: indexPath)
-            }
-            cell.accessories = [disclosure, delete]
+            //let delete = UICellAccessory.delete(displayed: .whenEditing) {
+            //    self.deleteHandler(indexPath: indexPath)
+            //}
+            cell.accessories = [disclosure]
             
         }
         
@@ -48,9 +77,9 @@ extension ViewController {
 
     }
     
-    func deleteHandler(indexPath: IndexPath){
+    func deleteHandler(index: Int){
         print("deleteHandler")
-        presenter.delete(at: indexPath.row)
+        presenter.delete(at: index)
     }
     
     
