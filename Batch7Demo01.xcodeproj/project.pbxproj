@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		22193D26280DA15C00C0E9B8 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22193D25280DA15C00C0E9B8 /* ViewControllerTests.swift */; };
 		2265685E2809B0C9008F7545 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 2265685D2809B0C9008F7545 /* Documentation.docc */; };
-		227784EB280D928E004C9883 /* AppDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227784EA280D928E004C9883 /* AppDelegateTests.swift */; };
 		229E0D8B28070593006188AE /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229E0D8A28070593006188AE /* Store.swift */; };
 		229E0D8D2807060C006188AE /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229E0D8C2807060C006188AE /* AppState.swift */; };
 		229E0D8F2807080C006188AE /* ViewController+BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229E0D8E2807080C006188AE /* ViewController+BalanceView.swift */; };
@@ -61,7 +60,6 @@
 		223FE0682805B81400A917ED /* TransactionListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionListView.swift; sourceTree = "<group>"; };
 		223FE0692805B81400A917ED /* TransactionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 		2265685D2809B0C9008F7545 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
-		227784EA280D928E004C9883 /* AppDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateTests.swift; sourceTree = "<group>"; };
 		229E0D8A28070593006188AE /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		229E0D8C2807060C006188AE /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		229E0D8E2807080C006188AE /* ViewController+BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+BalanceView.swift"; sourceTree = "<group>"; };
@@ -207,7 +205,6 @@
 			children = (
 				22A442F728046D4C001547E9 /* Batch7Demo01UITests.swift */,
 				22A442F928046D4C001547E9 /* Batch7Demo01UITestsLaunchTests.swift */,
-				227784EA280D928E004C9883 /* AppDelegateTests.swift */,
 				22A268CE280F2C6600BD3E47 /* ViewControllerUITests.swift */,
 			);
 			path = Batch7Demo01UITests;
@@ -389,7 +386,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				22A442F828046D4C001547E9 /* Batch7Demo01UITests.swift in Sources */,
-				227784EB280D928E004C9883 /* AppDelegateTests.swift in Sources */,
 				22A268CF280F2C6600BD3E47 /* ViewControllerUITests.swift in Sources */,
 				22A442FA28046D4C001547E9 /* Batch7Demo01UITestsLaunchTests.swift in Sources */,
 			);
