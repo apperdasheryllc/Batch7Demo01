@@ -87,7 +87,7 @@ extension ViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Transaction>()
         snapshot.appendSections([.main])
         snapshot.appendItems(transactions)
-        dataSource.apply(snapshot, animatingDifferences: false)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
     
     func addTransactionListView(){
