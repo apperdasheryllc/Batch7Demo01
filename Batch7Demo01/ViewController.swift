@@ -31,6 +31,14 @@ class ViewController: UIViewController, StoreSubscriber {
     var updateButton = UIButton()
     let presenter = Presenter(interactor: Interactor(model: DataModel()))
     
+    func addAccessibilityIdentifiers(){
+        transactionTitleField.accessibilityIdentifier = "transaction.title"
+        transactionAmountField.accessibilityIdentifier = "transaction.amount"
+        addButton.accessibilityIdentifier = "transaction.add"
+        deleteButton.accessibilityIdentifier = "transaction.delete"
+        balanceValueLabel.accessibilityIdentifier = "balance.amount"
+    }
+    
     // Handle the State
     func newState(state: State) {
         guard let appState = state as? AppState else {return}
@@ -50,12 +58,14 @@ class ViewController: UIViewController, StoreSubscriber {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
+        addAccessibilityIdentifiers()
         configureFormatter()
         setupButtons()
         addBalanceView()
         addTransactionView()
         configureTransactionList()
         presenter.store.subscribe(self)
+        
     }
     func setupButtons() {
         addButton.setTitle("Deposit", for: .normal)
