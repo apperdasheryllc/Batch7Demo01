@@ -60,10 +60,4 @@ class AppStateTests: XCTestCase, StoreSubscriber {
         XCTAssertFalse(appState.transactions.isEmpty, "Expected to find app state transactions.")
     }
     
-    func skip_testAppState_Insert(){
-        let appState = AppState()
-        //let replaceMe = Transaction(date: Date(), title: "Test", amount: 12)
-        //let store = Store()
-        
-    }
 }
