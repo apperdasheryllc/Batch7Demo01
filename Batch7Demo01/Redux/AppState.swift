@@ -17,6 +17,7 @@ struct UpdateAction: Action {
     let interactor: Interactor
 }
 
+/*
 func appReducer(_ action: Action, _ state: State?) -> State {
     var newState = state as? AppState ?? AppState()
     switch action {
@@ -24,6 +25,16 @@ func appReducer(_ action: Action, _ state: State?) -> State {
         newState.transactions = action.interactor.model.transactions
     default:
         break
+    }
+    return newState
+}
+
+ */
+
+func appReducer(_ action: Action, _ state: State?) -> State {
+    var newState = state as? AppState ?? AppState()
+    if let newAction = action as? UpdateAction {
+        newState.transactions = newAction.interactor.model.transactions
     }
     return newState
 }
