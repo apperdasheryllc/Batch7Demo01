@@ -17,6 +17,7 @@ class ViewControllerTests: XCTestCase {
         
         mainVC = ViewController()
         mainVC.loadViewIfNeeded()
+        
     }
 
     override func tearDownWithError() throws {
@@ -60,5 +61,22 @@ class ViewControllerTests: XCTestCase {
         let withdrawalButton = try XCTUnwrap(mainVC.addButton)
         let withdrawalButtonActions = withdrawalButton.actions(forTarget: mainVC, forControlEvent: .touchUpInside)
         XCTAssertEqual(withdrawalButton.allTargets.count, 1)
+    }
+    
+    func testViewController_TransactionListPerformQuery() throws {
+        let listView = try XCTUnwrap(mainVC.transactionListView)
+        //mainVC.configureTransactionList()
+        mainVC.addTransactionListView()
+        let transaction = Transaction(title: "Title Test 1", amount: 10, type: .deposit)
+        mainVC.performQuery(transactions: [transaction])
+        XCTAssertTrue(listView.numberOfItems(inSection: 0) == 1, "List does not have a trasaction row.")
+    }
+    
+    func testViewController_BalanceViewUpdate() throws {
+        //let balanceView = try XCTUnwrap(mainVC.balanceView)
+        let balanceValueLabel = try XCTUnwrap(mainVC.balanceValueLabel)
+        mainVC.addBalanceView()
+        //let transaction = Transaction(title: "Balance Test", amount: 30, type: .deposit)
+        XCTAssertTrue(balanceValueLabel.text == "0", "Balance is not equal to zero")
     }
 }
