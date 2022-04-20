@@ -75,7 +75,7 @@ class ViewControllerUITests: XCTestCase {
         depositButton.tap()
         
         // Assert
-        XCTAssertTrue(app.staticTexts["balance.value"].label == "$200", "Transaction deposit does not increment as expected.")
+        XCTAssertTrue(app.staticTexts["balance.amount"].label == "$200", "Transaction deposit does not increment as expected.")
         
     }
     
@@ -93,14 +93,54 @@ class ViewControllerUITests: XCTestCase {
         amount.tap()
         amount.typeText("200")
         
-        let depositButton = app.buttons["transaction.delete"]
+        let withdrawalButton = app.buttons["transaction.delete"]
         
         
         // Act
-        depositButton.tap()
+        withdrawalButton.tap()
         
         // Assert
-        XCTAssertTrue(app.staticTexts["balance.value"].label == "$-200", "Transaction withdrawal does not increment as expected.")
+        XCTAssertTrue(app.staticTexts["balance.amount"].label == "$-200", "Transaction withdrawal does not increment as expected.")
+        
+    }
+    
+    func testViewController_InsertThenDelete_ListViewUpdates(){
+        // Arrange
+        
+        let app = XCUIApplication()
+        
+        // Enter two transactions?
+        let transactionAmountTextField = app/*@START_MENU_TOKEN@*/.textFields["transaction.amount"]/*[[".textFields[\"Amount\"]",".textFields[\"transaction.amount\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        
+        // Deposit 100
+        transactionAmountTextField.tap()
+        transactionAmountTextField.typeText("100")
+        
+        // Enter a title
+        let transactionTitleTextField = app.textFields["transaction.title"]
+        transactionTitleTextField.tap()
+        transactionTitleTextField.typeText("Deposit")
+        
+        // Return the keyboard so we can swipe on the collection view
+        app/*@START_MENU_TOKEN@*/.buttons["Return"]/*[[".keyboards",".buttons[\"return\"]",".buttons[\"Return\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        // add the transaction
+        app/*@START_MENU_TOKEN@*/.buttons["transaction.add"]/*[[".buttons[\"Deposit\"]",".buttons[\"transaction.add\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        
+        let collectionViewsQuery = app.collectionViews
+        let collectionView = collectionViewsQuery.firstMatch
+        let cellsQuery = collectionView.cells
+        // Act
+        
+        cellsQuery["Deposit, $100"].otherElements.containing(.staticText, identifier:"Deposit").element.swipeRight()
+        
+        collectionView.buttons["Delete"].tap()
+        
+        
+        // Assert
+        
+        XCTAssertTrue(cellsQuery.count == 0, "Cells count is not 0 after inser then delete.")
         
     }
 }
