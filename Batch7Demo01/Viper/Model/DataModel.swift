@@ -16,7 +16,7 @@ final class DataModel: Repository {
     private var cancellables = Set<AnyCancellable>()
     
     func add(item: Transaction) {
-        transactions.append(item)
+        transactions.insert(item, at: 0)
     }
     func delete(index: Int) {
         if !transactions.isEmpty && index < transactions.count{
