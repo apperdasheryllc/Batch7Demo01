@@ -37,6 +37,7 @@ extension ViewController {
             self.deleteItem(item)
             completion(true)
         }
+        deleteAction.title = "Delete"
         deleteAction.image = UIImage(systemName: "trash.fill")
         deleteAction.backgroundColor = .systemRed
         
