@@ -26,6 +26,7 @@ extension ViewController {
         ])
         
         transactionAmountField.placeholder = "Amount"
+        transactionAmountField.delegate = self
         transactionAmountField.keyboardType = .decimalPad
     }
     
@@ -43,7 +44,7 @@ extension ViewController {
         ])
         
         transactionTitleField.placeholder = "Transaction Name"
-        
+        transactionTitleField.delegate = self
         
     }
     
@@ -64,4 +65,12 @@ extension ViewController {
         addTransactionAmountField()
     }
     
+}
+
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
 }
