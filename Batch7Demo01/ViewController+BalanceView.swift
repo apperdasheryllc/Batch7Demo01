@@ -71,7 +71,8 @@ extension UILabel {
         let diff = to - from
         for i in 0...steps {
             DispatchQueue.main.asyncAfter(deadline: .now() + rate * Double(i)) {
-                self.text = "$\(Double(from) + Double(diff) * (Double(i) / Double(steps)))"
+                let newValue = Double(from) + Double(diff) * (Double(i) / Double(steps))
+                self.text = "$\(Int(newValue))"
             }
         }
     }

@@ -75,8 +75,14 @@ class ViewControllerUITests: XCTestCase {
         depositButton.tap()
         
         // Assert
-        XCTAssertTrue(app.staticTexts["balance.amount"].label == "$200", "Transaction deposit does not increment as expected.")
-        
+        //XCTAssertTrue(app.staticTexts["balance.amount"].label == "$200", "Transaction deposit does not increment as expected.")
+        let exp = expectation(description: "Test after 5 seconds")
+        let result = XCTWaiter.wait(for: [exp], timeout: 5.0)
+        if result == XCTWaiter.Result.timedOut {
+            XCTAssertTrue(app.staticTexts["balance.amount"].label == "$200", "Transaction deposit does not increment as expected.")
+        } else {
+            XCTFail("Delay interrupted")
+        }
     }
     
     
@@ -100,8 +106,14 @@ class ViewControllerUITests: XCTestCase {
         withdrawalButton.tap()
         
         // Assert
-        XCTAssertTrue(app.staticTexts["balance.amount"].label == "$-200", "Transaction withdrawal does not increment as expected.")
-        
+        //XCTAssertTrue(app.staticTexts["balance.amount"].label == "$-200", "Transaction withdrawal does not increment as expected.")
+        let exp = expectation(description: "Test after 5 seconds")
+        let result = XCTWaiter.wait(for: [exp], timeout: 5.0)
+        if result == XCTWaiter.Result.timedOut {
+            XCTAssertTrue(app.staticTexts["balance.amount"].label == "$-200", "Transaction withdrawal does not increment as expected.")
+        } else {
+            XCTFail("Delay interrupted")
+        }
     }
     
     func testViewController_InsertThenDelete_ListViewUpdates(){
