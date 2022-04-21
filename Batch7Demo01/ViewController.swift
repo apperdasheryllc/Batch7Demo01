@@ -39,17 +39,20 @@ class ViewController: UIViewController, StoreSubscriber {
         balanceValueLabel.accessibilityIdentifier = "balance.amount"
     }
     
+    // store the old balance value for the animation
+    var oldBalanceValue: Int = 0
+    
+    func updateBalanceValue(balance: Int){
+        balanceValueLabel.countAnimation(from: oldBalanceValue, to: balance)
+    }
+    
     // Handle the State
     func newState(state: State) {
         guard let appState = state as? AppState else {return}
         let transactions = appState.transactions
         let balance = presenter.calculateBalance(transactions: transactions)
-        if let formattedString = formatter.string(from: NSNumber(value: balance)){
-            balanceValueLabel.text = "$\(formattedString)"
-        }
-        else{
-            balanceValueLabel.text = "\(balance)"
-        }
+        updateBalanceValue(balance: balance)
+        oldBalanceValue = balance
         transactionTitleField.text = ""
         transactionAmountField.text = ""
         performQuery(transactions: transactions)

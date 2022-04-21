@@ -61,3 +61,18 @@ extension ViewController {
     }
     
 }
+
+extension UILabel {
+    func countAnimation(from: Int, to: Int) {
+        
+        let steps: Int = 20
+        let duration = 0.350
+        let rate = duration / Double(steps)
+        let diff = to - from
+        for i in 0...steps {
+            DispatchQueue.main.asyncAfter(deadline: .now() + rate * Double(i)) {
+                self.text = "$\(Double(from) + Double(diff) * (Double(i) / Double(steps)))"
+            }
+        }
+    }
+}
