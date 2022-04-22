@@ -8,11 +8,14 @@
 /// A ViewController that demonstrates Redux and VIPER
 
 import UIKit
+import Combine
 
 class ViewController: UIViewController, StoreSubscriber {
     
     let formatter = NumberFormatter()
-    
+    private var webservice: Webservice = Webservice()
+    private var cancellable: AnyCancellable?
+
     func configureFormatter(){
         formatter.groupingSize = 3
         formatter.usesGroupingSeparator = true
@@ -68,7 +71,23 @@ class ViewController: UIViewController, StoreSubscriber {
         addTransactionView()
         configureTransactionList()
         presenter.store.subscribe(self)
-        
+        updateLocationAndTemperature()
+    }
+    private func updateLocationAndTemperature() {
+        LocationManager.shared.getUserLocation { city in
+            self.cancellable = self.webservice.fetchWeather(city: city)
+                .catch { _ in Just(Weather.placeholder) }
+                .map { $0 }
+                .sink { value in
+                    DispatchQueue.main.async { [weak self] in
+                        if let temp = value.temp {
+                            self?.title = "\(city) \(temp) ℉"
+                        } else {
+                            self?.title = city
+                        }
+                    }
+                }
+        }
     }
     func setupButtons() {
         addButton.setTitle("Deposit", for: .normal)
